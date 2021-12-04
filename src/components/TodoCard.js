@@ -10,21 +10,23 @@ import DeleteIcon from '@material-ui/icons/Delete'
 import { Card } from '@mui/material'
 import styled from 'styled-components'
 
-const TodoCard = () => {
-  const numberCard = 1
+const TodoCard = (props) => {
   return (
     <View style={styles.cardWrapper}>
       <MyCard>
         <CardHeader
           action={
-            <IconButton aria-label="delete" onClick={console.log('delete')}>
+            <IconButton
+              aria-label="delete"
+              onClick={() => props.handleDelete(props.id)}
+            >
               <DeleteIcon />
             </IconButton>
           }
           title={
             <View style={styles.header}>
               <Typography variant="body1" component="label">
-                {numberCard}
+                {props.index + 1}
               </Typography>
               <FormControlLabel
                 control={
@@ -35,14 +37,14 @@ const TodoCard = () => {
                     color="primary"
                   />
                 }
-                label="Title"
+                label={props.title}
               />
             </View>
           }
         />
         <CardContent>
-          <Typography variant="body2" component="p">
-            Description
+          <Typography variant="body1" noWrap={true} component="h1">
+            {props.description}
           </Typography>
         </CardContent>
       </MyCard>
