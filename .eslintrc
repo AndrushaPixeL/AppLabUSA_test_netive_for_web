@@ -26,8 +26,8 @@
       }],
       "react/jsx-fragments": "off",
       "import/prefer-default-export": "off",
-      "@typescript-eslint/no-unused-vars": "warn",
       "no-console": "off",
-      "react/prop-types": 0
+      "react/prop-types": 0,
+      "no-unused-vars": "warn"
     }
 }
