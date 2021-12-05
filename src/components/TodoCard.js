@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { StyleSheet, View } from 'react-native'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
@@ -11,9 +11,17 @@ import { Card } from '@mui/material'
 import styled from 'styled-components'
 
 const TodoCard = (props) => {
+  const [checkbox, setCheckbox] = useState(false)
+  let done = {}
+  if (checkbox) {
+    done = {
+      backgroundColor: 'rgb(234, 237, 255)',
+      textDecoration: 'line-through',
+    }
+  } else done = {}
   return (
     <View style={styles.cardWrapper}>
-      <MyCard>
+      <MyCard sx={done}>
         <CardHeader
           action={
             <IconButton
@@ -31,8 +39,8 @@ const TodoCard = (props) => {
               <FormControlLabel
                 control={
                   <Checkbox
-                    checked={false}
-                    onChange={console.log('check')}
+                    checked={checkbox}
+                    onChange={() => setCheckbox(!checkbox)}
                     name={'Check'}
                     color="primary"
                   />
@@ -54,17 +62,17 @@ const TodoCard = (props) => {
 export default TodoCard
 
 const styles = StyleSheet.create({
-  cardWrapper: {
+  cardWrapperUndone: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
     alignSelf: 'center',
     width: '100%',
+    backgroundColor: 'red',
   },
 })
 const MyCard = styled(Card)({
   width: '100%',
-  // textDecoration: 'line-through',
   color: '#888888',
   margin: '8px 0',
 })

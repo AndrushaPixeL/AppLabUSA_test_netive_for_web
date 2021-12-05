@@ -1,17 +1,17 @@
 import React from 'react'
-import { StyleSheet, View } from 'react-native'
 import Header from './components/Header'
 import TodoCard from './components/TodoCard'
 import TodoItemForm from './components/TodoItemForm'
 import { useAppPresenter } from './redux/presenters/AppPresenter'
 import CircularProgress from '@mui/material/CircularProgress'
+import styled from 'styled-components/native'
 
 const App = () => {
   const { values, eventHandlers } = useAppPresenter()
   return (
-    <View style={styles.app}>
+    <AppWrapper>
       <Header />
-      <View style={styles.appContainer}>
+      <AppContainer>
         <TodoItemForm addItem={eventHandlers.handleAddItem} />
         {values.isLoading ? (
           <CircularProgress />
@@ -29,25 +29,23 @@ const App = () => {
             )
           })
         )}
-      </View>
-    </View>
+      </AppContainer>
+    </AppWrapper>
   )
 }
 export default App
 
-const styles = StyleSheet.create({
-  app: {
-    marginHorizontal: 'auto',
-    backgroundColor: 'rgba(181, 192, 255, 0.15)',
-    width: '100%',
-    minHeight: '100vh',
-    height: '100%',
-  },
-  appContainer: {
-    display: 'flex',
-    alignSelf: 'center',
-    width: '100%',
-    maxWidth: 700,
-    padding: '16px',
-  },
-})
+const AppWrapper = styled.View`
+  background-color: rgba(181, 192, 255, 0.15);
+  width: 100%;
+  min-height: 100vh;
+  height: 100%;
+  border-color: red;
+`
+const AppContainer = styled.View`
+  display: flex;
+  align-self: center;
+  width: 100%;
+  max-width: 700;
+  padding: 16px;
+`
