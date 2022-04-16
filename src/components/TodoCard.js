@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet, View } from 'react-native'
+import { View } from 'react-native'
 import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import Typography from '@material-ui/core/Typography'
@@ -20,7 +20,7 @@ const TodoCard = (props) => {
     }
   } else done = {}
   return (
-    <View style={styles.cardWrapper}>
+    <HeaderWrapper>
       <MyCard sx={done}>
         <CardHeader
           action={
@@ -32,7 +32,7 @@ const TodoCard = (props) => {
             </IconButton>
           }
           title={
-            <View style={styles.header}>
+            <View>
               <Typography variant="body1" component="label">
                 {props.index + 1}
               </Typography>
@@ -56,20 +56,18 @@ const TodoCard = (props) => {
           </Typography>
         </CardContent>
       </MyCard>
-    </View>
+    </HeaderWrapper>
   )
 }
 export default TodoCard
 
-const styles = StyleSheet.create({
-  cardWrapperUndone: {
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    alignSelf: 'center',
-    width: '100%',
-    backgroundColor: 'red',
-  },
+const HeaderWrapper = styled(View)({
+  display: 'flex',
+  justifyContent: 'center',
+  alignItems: 'center',
+  alignSelf: 'center',
+  width: '100%',
+  backgroundColor: 'red',
 })
 const MyCard = styled(Card)({
   width: '100%',

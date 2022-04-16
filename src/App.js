@@ -4,8 +4,8 @@ import TodoCard from './components/TodoCard'
 import TodoItemForm from './components/TodoItemForm'
 import { useAppPresenter } from './redux/presenters/AppPresenter'
 import CircularProgress from '@mui/material/CircularProgress'
-import styled from 'styled-components/native'
 import { ToastContainer } from 'react-toastify'
+import styled from 'styled-components/native'
 
 const App = () => {
   const { values, eventHandlers } = useAppPresenter()
@@ -14,7 +14,7 @@ const App = () => {
       <Header />
       <AppContainer>
         <TodoItemForm addItem={eventHandlers.handleAddItem} />
-        <ToastContainer limit={1} />
+        <ToastContainer />
         {values.isLoading ? (
           <CircularProgress />
         ) : (

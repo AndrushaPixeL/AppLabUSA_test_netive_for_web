@@ -20,7 +20,7 @@ const TodoItemForm = (props) => {
     let message = ''
     switch (error.type) {
       case 'pattern':
-        message = 'The title must begin with the letter'
+        message = 'The title must begin with the letter (Aa-Zz)'
         break
       case 'maxLength':
         message = 'The maximum length of the title is 300 characters'
